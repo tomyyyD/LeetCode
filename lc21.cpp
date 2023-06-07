@@ -43,8 +43,8 @@ ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
             }
             else
             {
-                head2 = head2->next;
                 lastchecked = head2;
+                head2 = head2->next;
             }
         }
     }
@@ -92,7 +92,7 @@ void printList(ListNode *list)
     // print nullpty terminated list
     while (list != nullptr)
     {
-        printf("%d", list->val);
+        printf("%d, ", list->val);
         list = list->next;
     }
 }
@@ -114,10 +114,11 @@ int main()
     f = &increaseByOne;
     g = &sqaure;
 
-    ListNode *l1 = makeList(5, f);
+    ListNode *l1 = makeList(20, f);
     ListNode *l2 = makeList(5, g);
 
     ListNode *merged = mergeTwoLists(l1, l2);
+    printList(merged);
     printf("\n");
     return 0;
 }

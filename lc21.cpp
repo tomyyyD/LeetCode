@@ -21,6 +21,12 @@ int increaseByOne(int x)
     return x + 1;
 }
 
+int sqaure(int x)
+{
+    return x * x;
+}
+
+// function to create the lists
 ListNode* makeList(int length, int(*func)(int))
 {
     ListNode *header = (ListNode *)malloc(sizeof(ListNode));
@@ -43,13 +49,25 @@ ListNode* makeList(int length, int(*func)(int))
 int main()
 {
     int (*f)(int);
+    int (*g)(int);
     f = &increaseByOne;
+    g = &sqaure;
+
     ListNode *l1 = makeList(5, f);
+    ListNode *l2 = makeList(5, g);
     while (l1 != nullptr){
-        printf("%d", l1 -> val);
+        printf("%d, ", l1 -> val);
         ListNode *temp = l1 -> next;
         free(l1);
         l1 = temp;
     }
+    printf("\n");
+    while (l2 != nullptr){
+        printf("%d, ", l2 -> val);
+        ListNode *temp = l2 -> next;
+        free(l2);
+        l2 = temp;
+    }
+    printf("\n");
     return 0;
 }

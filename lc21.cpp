@@ -16,7 +16,7 @@ ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
 {
     ListNode *head1 = list1;
     ListNode *head2 = list2;
-    ListNode *lastchecked = list2;
+    ListNode *lastchecked = nullptr;
     if (head2 == nullptr)
         return head1;
     if (head1 == nullptr)
@@ -48,6 +48,7 @@ ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
             }
         }
     }
+    return start;
 }
 
 /*
@@ -96,6 +97,16 @@ void printList(ListNode *list)
     }
 }
 
+void freeList(ListNode *list)
+{
+    while (list != nullptr)
+    {
+        ListNode *temp = list;
+        list = list->next;
+        free(temp);
+    }
+}
+
 int main()
 {
     int (*f)(int);
@@ -105,21 +116,6 @@ int main()
 
     ListNode *l1 = makeList(5, f);
     ListNode *l2 = makeList(5, g);
-    while (l1 != nullptr)
-    {
-        printf("%d, ", l1->val);
-        ListNode *temp = l1->next;
-        free(l1);
-        l1 = temp;
-    }
-    printf("\n");
-    while (l2 != nullptr)
-    {
-        printf("%d, ", l2->val);
-        ListNode *temp = l2->next;
-        free(l2);
-        l2 = temp;
-    }
 
     ListNode *merged = mergeTwoLists(l1, l2);
     printf("\n");

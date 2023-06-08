@@ -1,6 +1,10 @@
 #include <cstdlib>
 #include <stdio.h>
 
+/*
+Prereqs
+================================================================================
+*/
 struct ListNode
 {
     // contains
@@ -12,6 +16,10 @@ struct ListNode
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
+/*
+Solution
+================================================================================
+*/
 ListNode *mergeTwoLists(ListNode *list1, ListNode *list2)
 {
     ListNode *head1 = list1;
